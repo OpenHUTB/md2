@@ -16,8 +16,19 @@ const { buildTestHtml } = require('../helpers/webview');
   console.log('zones:', zones.join(', '));
 
   // update with table + theme, toggle + sync
-  const { renderMarkdown } = require('/Users/hexin/Desktop/markdown2anything/lib/converter');
-  const { bodyHtml } = renderMarkdown('/tmp/wide_table_test.md');
+  const fs = require('fs');
+  const os = require('os');
+  const path = require('path');
+  // ...
+  const { renderMarkdown } = require('../../lib/converter');
+  const mdPath = path.join(os.tmpdir(), 'wide_table_test.md');
+  const cols = Array.from({ length: 12 }, (_, i) => `列${i + 1}`);
+  fs.writeFileSync(mdPath, [
+    '| ' + cols.join(' | ') + ' |',
+    '|' + cols.map(() => '---').join('|') + '|',
+    '| ' + cols.map((_, i) => `内容${i + 1}`).join(' | ') + ' |',
+  ].join('\n'));
+  const { bodyHtml } = renderMarkdown(mdPath);
   await page.evaluate((bh) => window.dispatchEvent(new MessageEvent('message', { data: { type: 'update', bodyHtml: bh, title: 't', theme: { id: 'wechat', css: '', wrapperBg: '#ffffff' } } })), bodyHtml);
   await page.waitForTimeout(250);
   const accent = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--m2a-accent').trim());
