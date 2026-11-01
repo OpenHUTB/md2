@@ -1,4 +1,4 @@
-# Markdown2Anything
+# 文档发布
 
 **写一次，发到所有平台。**
 
@@ -169,4 +169,6 @@ npm run electron:dist      # 打包 dmg（Intel）/ Apple Silicon 用 npm run el
 
 ---
 
-*Made with ❤️ by [marsggbo](https://github.com/marsggbo)*
+## 参考
+
+* [markdown2anything](https://github.com/marsggbo/markdown2anything)
