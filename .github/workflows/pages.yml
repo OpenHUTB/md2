@@ -33,9 +33,6 @@ jobs:
       - name: 构建 web 静态资源
         run: bash web/build.sh
 
-      - name: 配置 Pages 上下文
-        uses: actions/configure-pages@v6
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
