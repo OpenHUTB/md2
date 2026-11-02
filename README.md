@@ -121,15 +121,37 @@ AI 把长文拆成串推 thread，每条控制在 280 字内，配图自动按�
 
 ---
 
+
+## 插件打包
+
+1.使用 Ubuntu 20.04 下载并安装 [node 20](https://nodejs.org/en/download) 预编译版；并安装`vsce`
+```shell
+npm install 
+npm i -g vsce
+```
+
+2.打包成`vsix`：
+```shell
+vsce package
+```
+
+3.在 VS Code 的 Extensions 中，点击右上角 ... 选择 Install from VSIX... 。在弹出的文件选择界面，找到第 2 步生成的 vsix 文件，点击 Install 即可进行安装；安装完成之后，在 VS Code 右下角会弹出提示信息：Completed installing ... extension from VSIX.
+
+或者 Ctrl + Shift + P -> 输入 Install from... -> 选择 Extensions:Install from VSIX... 打开文件选择界面。之后的流程和上面的一样！
+
+4.重启 VS Code 即可在 Extensions 中看到刚才安装的插件！
+
+5.（卸载）在 VS Code 的 Extensions 中搜索 `markdown2anything`，打开第一个点击 `Uninstall` 即可卸载插件。
+
+
+---
+
 ## 更新日志
 
 详见 [CHANGELOG.md](./CHANGELOG.md)
 
 ---
 
-*Made with ❤️ by [marsggbo](https://github.com/marsggbo)*
-
----
 
 ## 🌐 网页版（无需安装）
 
